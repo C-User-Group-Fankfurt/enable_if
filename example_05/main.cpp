@@ -7,9 +7,9 @@
 #include <type_traits>
 
 template <typename T> struct is_message : std::false_type {};
+template <typename T> struct is_message<const T> : is_message<T> {};
 
 template <typename T> constexpr bool is_message_v = is_message<T>::value;
-
 template <typename T> using is_message_t = typename is_message<T>::type;
 
 template <> struct is_message<legacy_messages::MessageA> : std::true_type {};

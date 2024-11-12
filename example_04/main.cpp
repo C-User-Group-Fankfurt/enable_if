@@ -7,6 +7,7 @@
 #include <type_traits>
 
 template <typename T> struct is_message : std::false_type {};
+template <typename T> struct is_message<const T> : is_message<T> {};
 
 template <> struct is_message<legacy_messages::MessageA> : std::true_type {};
 

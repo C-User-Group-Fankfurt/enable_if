@@ -17,6 +17,7 @@ using false_type = integral_constant<bool, false>;
 using true_type = integral_constant<bool, true>;
 
 template <typename T> struct is_message : false_type {};
+// template <typename T> struct is_message<const T> : is_message<T> {};
 
 template <> struct is_message<legacy_messages::MessageA> : true_type {};
 
@@ -51,9 +52,9 @@ printTimestamp(const Message &message) {
 }
 
 int main() {
-  constexpr legacy_messages::MessageA a{};
-  constexpr legacy_messages::MessageB b{};
-  constexpr legacy_messages::MessageC c{};
+  const legacy_messages::MessageA a{};
+  const legacy_messages::MessageB b{};
+  const legacy_messages::MessageC c{};
 
   std::cout << std::boolalpha;
 
