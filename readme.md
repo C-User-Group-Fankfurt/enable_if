@@ -51,8 +51,8 @@ In this Meetup we will:
 
 ```bash
 sudo apt install python3-venv
-python3 -m venv ~/python/simulation
-source ~/python/simulation/bin/activate
+python3 -m venv ~/python/pre-commit
+source ~/python/pre-commit/bin/activate
 pip install -r requirements.txt
 pre-commit install
 ```
