@@ -31,7 +31,7 @@ In this Meetup we will:
 
 ---
 
-## Hands-On Coding - no slides
+## Hands-On Coding - No Slides
 
 * I'm Daniel
 * please ask questions right away
