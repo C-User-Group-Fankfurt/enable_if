@@ -21,19 +21,21 @@ template <typename T> struct is_message : false_type {};
 
 template <> struct is_message<legacy_messages::MessageA> : true_type {};
 
-legacy_messages::Header getHeader(const legacy_messages::MessageA &message) {
+const legacy_messages::Header &
+getHeader(const legacy_messages::MessageA &message) {
   return message.header;
 }
 
 template <> struct is_message<legacy_messages::MessageB> : std::true_type {};
 
-legacy_messages::Hdr getHeader(const legacy_messages::MessageB &message) {
+const legacy_messages::Hdr &
+getHeader(const legacy_messages::MessageB &message) {
   return message.hdr;
 }
 
 template <> struct is_message<legacy_messages::MessageC> : std::true_type {};
 
-legacy_messages::Description
+const legacy_messages::Description &
 getHeader(const legacy_messages::MessageC &message) {
   return message.description;
 }
@@ -47,14 +49,14 @@ template <class T> struct enable_if<true, T> {
 template <class Message>
 typename enable_if<is_message<Message>::value, void>::type
 printTimestamp(const Message &message) {
-  auto header = getHeader(message);
+  const auto &header = getHeader(message);
   std::cout << header.stamp << std::endl;
 }
 
 int main() {
-  const legacy_messages::MessageA a{};
-  const legacy_messages::MessageB b{};
-  const legacy_messages::MessageC c{};
+  constexpr legacy_messages::MessageA a{};
+  constexpr legacy_messages::MessageB b{};
+  constexpr legacy_messages::MessageC c{};
 
   std::cout << std::boolalpha;
 

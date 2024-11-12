@@ -14,19 +14,21 @@ template <typename T> using is_message_t = typename is_message<T>::type;
 
 template <> struct is_message<legacy_messages::MessageA> : std::true_type {};
 
-legacy_messages::Header getHeader(const legacy_messages::MessageA &message) {
+const legacy_messages::Header &
+getHeader(const legacy_messages::MessageA &message) {
   return message.header;
 }
 
 template <> struct is_message<legacy_messages::MessageB> : std::true_type {};
 
-legacy_messages::Hdr getHeader(const legacy_messages::MessageB &message) {
+const legacy_messages::Hdr &
+getHeader(const legacy_messages::MessageB &message) {
   return message.hdr;
 }
 
 template <> struct is_message<legacy_messages::MessageC> : std::true_type {};
 
-legacy_messages::Description
+const legacy_messages::Description &
 getHeader(const legacy_messages::MessageC &message) {
   return message.description;
 }
@@ -34,7 +36,7 @@ getHeader(const legacy_messages::MessageC &message) {
 template <class Message>
 typename std::enable_if<is_message<Message>::value, void>::type
 printTimestamp(const Message &message) {
-  auto header = getHeader(message);
+  const auto &header = getHeader(message);
   std::cout << header.stamp << std::endl;
 }
 
@@ -53,7 +55,7 @@ int main() {
   std::cout << "is_message(c) = " << is_message<decltype(c)>::value << " : ";
   printTimestamp(c);
 
-  std::cout << "is_message(int) = " << is_message<decltype(25)>::value << " : ";
+  std::cout << "is_message(int) = " << is_message<decltype(25)>::value;
   // printTimestamp(25);
 
   return EXIT_SUCCESS;

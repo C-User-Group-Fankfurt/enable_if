@@ -11,19 +11,21 @@ template <typename T> struct is_message<const T> : is_message<T> {};
 
 template <> struct is_message<legacy_messages::MessageA> : std::true_type {};
 
-legacy_messages::Header getHeader(const legacy_messages::MessageA &message) {
+const legacy_messages::Header &
+getHeader(const legacy_messages::MessageA &message) {
   return message.header;
 }
 
 template <> struct is_message<legacy_messages::MessageB> : std::true_type {};
 
-legacy_messages::Hdr getHeader(const legacy_messages::MessageB &message) {
+const legacy_messages::Hdr &
+getHeader(const legacy_messages::MessageB &message) {
   return message.hdr;
 }
 
 template <> struct is_message<legacy_messages::MessageC> : std::true_type {};
 
-legacy_messages::Description
+const legacy_messages::Description &
 getHeader(const legacy_messages::MessageC &message) {
   return message.description;
 }
@@ -31,7 +33,7 @@ getHeader(const legacy_messages::MessageC &message) {
 template <class Message>
 typename std::enable_if<is_message<Message>::value, void>::type
 printTimestamp(const Message &message) {
-  auto header = getHeader(message);
+  const auto &header = getHeader(message);
   std::cout << header.stamp << std::endl;
 }
 
