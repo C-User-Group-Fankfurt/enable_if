@@ -5,6 +5,10 @@
 #include <cstdlib>
 #include <iostream>
 
+// I promise, this is the worst part of the session! 😅
+// And we will refactor the code nicely later.
+
+// For every value of T in the template there will be a new type of the struct
 template <class T, T v> struct integral_constant {
   static constexpr T value = v;
   using value_type = T;
@@ -75,6 +79,8 @@ int main() {
 
   std::cout << "is_message(int) = " << is_message<decltype(25)>::value;
   // printTimestamp(25);
+
+  // Unfortunately, our code is wrong!
 
   return EXIT_SUCCESS;
 }
