@@ -50,6 +50,15 @@ In this Meetup we will:
 # Build
 
 ```bash
+cmake -B build
+cmake --build build
+```
+
+## Contribute
+
+To contribute, please install pre-commit hooks:
+
+```bash
 sudo apt install python3-venv
 python3 -m venv ~/python/pre-commit
 source ~/python/pre-commit/bin/activate
