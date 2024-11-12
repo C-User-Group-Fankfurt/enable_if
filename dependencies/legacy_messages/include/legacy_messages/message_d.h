@@ -13,5 +13,4 @@ struct MessageD {
 };
 } // namespace legacy_messages
 
-
-#endif //MESSAGE_D_H
+#endif // MESSAGE_D_H

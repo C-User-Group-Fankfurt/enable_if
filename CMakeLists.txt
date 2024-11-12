@@ -4,6 +4,7 @@ project(type_traits)
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Enable all warnings
 add_compile_options(-Wall -Wextra -Wpedantic)

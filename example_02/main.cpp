@@ -9,17 +9,16 @@ legacy_messages::Header getHeader(const legacy_messages::MessageA &message) {
   return message.header;
 }
 
-legacy_messages::Hdr getHeader(
-    const legacy_messages::MessageB &message) {
+legacy_messages::Hdr getHeader(const legacy_messages::MessageB &message) {
   return message.hdr;
 }
 
-legacy_messages::Description getHeader(const legacy_messages::MessageC &message) {
+legacy_messages::Description
+getHeader(const legacy_messages::MessageC &message) {
   return message.description;
 }
 
-template <class Message>
-void printTimestamp(const Message &message) {
+template <class Message> void printTimestamp(const Message &message) {
   auto header = getHeader(message);
   std::cout << header.stamp << std::endl;
 }

@@ -20,8 +20,7 @@ template <typename T> struct is_message : false_type {};
 
 template <> struct is_message<legacy_messages::MessageA> : true_type {};
 
-legacy_messages::Header
-getHeader(const legacy_messages::MessageA &message) {
+legacy_messages::Header getHeader(const legacy_messages::MessageA &message) {
   return message.header;
 }
 
@@ -62,9 +61,7 @@ int main() {
    * Note: decltype() is not a function, it's a specifier:
    *  https://en.cppreference.com/w/cpp/language/decltype
    */
-  std::cout << "is_message(a) = "
-    << is_message<decltype(a)>::value
-    << " : ";
+  std::cout << "is_message(a) = " << is_message<decltype(a)>::value << " : ";
   printTimestamp(a);
 
   std::cout << "is_message(b) = " << is_message<decltype(b)>::value << " : ";
